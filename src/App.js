@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Window from './components/Window';
 
 function App() {
+
+  const [show, setShow] = useState(false)
+  
+  function openWindow(){
+    console.log('hello')
+    setShow(!show)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {show ? (<Window openWindow={openWindow} show={show}/>) : (<button className='btn-open' onClick={openWindow}>Открой меня</button>)}
     </div>
   );
 }
